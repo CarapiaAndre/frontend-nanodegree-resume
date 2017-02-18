@@ -1,18 +1,81 @@
+var bio = {
+  "name": "André Carapiá",
+  "role": "Web Developer",
+  "contacts": {
+    "mobile": "(11) 97132-6276",
+    "e-mail": "carapia.andre@gmail.com",
+    "github": "CarapiaAndre",
+    "location": "Vila Aurora, Itapevi, SP"
+  },
+  "skills": ["C#", "HTML", "CSS", "JavaScript", "SqlServer"],
+  "biopic": "images/fry.jpg",
+  "display": function() {
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    $("#header").prepend(formattedName, formattedRole);
+
+    for(contact in bio.contacts) {
+      console.log(bio.contacts[contact]);
+      var formattedGeneric = HTMLcontactGeneric.replace("%contact%", contact);
+      formattedGeneric = formattedGeneric.replace("%data%", bio.contacts[contact]);
+      $("#topContacts").append(formattedGeneric);
+    }
+
+    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+    $("#header").append(formattedPic);
+
+    if(bio.skills.length > 0 ){
+      $("#header").append(HTMLskillsStart);
+
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+      $("#skills").append(formattedSkill);
+
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+      $("#skills").append(formattedSkill);
+
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+      $("#skills").append(formattedSkill);
+
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+      $("#skills").append(formattedSkill);
+
+      var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+      $("#skills").append(formattedSkill);
+    }
+  }
+};
+
 var work = {
   "jobs": [
     {
       "employer": "Wappa",
       "title": "C# .Net BackEnd Developer",
       "dates": 2015,
-      "description": "Eight months working with .Net plataform."
+      "description": "Eight months working with .Net plataform.",
+      "location": "Vila Olímpia, São Paulo"
     },
     {
       "employer": "OnTime",
       "title": "Web Developer",
       "dates": 2016,
-      "description": "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML"
+      "description": "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML",
+      "location": "CLI - Itapevi, São Paulo"
     }
-  ]
+  ],
+  "display": function () {
+    for(job in work.jobs) {
+      $("#workExperience").append(HTMLworkStart);
+
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+      var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+      var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+      $(".work-entry:last").append(formattedEmployerTitle, formattedDates, formattedDescription);
+    }
+  }
 };
 
 var projects = {
@@ -35,45 +98,29 @@ var projects = {
       "description": "Just kidding with Css (:",
       "images": ["images/animal-card.JPG"]
     }
-  ]
-};
+  ],
+  "display": function() {
+    for(project in projects.projects) {
+      $("#projects").append(HTMLprojectStart);
 
-projects.display = function() {
-  for(project in projects.projects) {
-    $("#projects").append(HTMLprojectStart);
+      var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+      $(".project-entry:last").append(formattedProjectTitle);
 
-    var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-    $(".project-entry:last").append(formattedProjectTitle);
+      var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+      $(".project-entry:last").append(formattedProjectDates);
 
-    var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-    $(".project-entry:last").append(formattedProjectDates);
+      var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+      $(".project-entry:last").append(formattedProjectDescription);
 
-    var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-    $(".project-entry:last").append(formattedProjectDescription);
+      if(projects.projects[project].images.length > 0) {
+        for(image in projects.projects[project].images) {
+          var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
 
-    if(projects.projects[project].images.length > 0) {
-      for(image in projects.projects[project].images) {
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
-
-        $(".project-entry:last").append(formattedImage);
+          $(".project-entry:last").append(formattedImage);
+        }
       }
     }
   }
-}
-
-projects.display();
-
-var bio = {
-  "name": "André Carapiá",
-  "role": "Web Developer",
-  "contacts": {
-    "mobile": "(11) 97132-6276",
-    "e-mail": "carapia.andre@gmail.com",
-    "github": "CarapiaAndre",
-    "location": "Itapevi, SP"
-  },
-  "skills": ["C#", "HTML", "CSS", "JavaScript", "SqlServer"],
-  "biopic": "images/fry.jpg"
 };
 
 var education = {
@@ -91,81 +138,30 @@ var education = {
       "title": "Front-End Web Developer",
       "school": "Udacity",
       "dates": "2017",
-      "url": "https://www.udacity.com/"
+      "url": "https://www.udacity.com/",
     }
   ]
 };
 
+// $(document).click(function(loc) {
+//   var x = loc.pageX;
+//   var y = loc.pageY;
+//
+//   logClicks(x, y);
+// });
 
-
-//topContacts
-
-for(contact in bio.contacts) {
-  console.log(bio.contacts[contact]);
-  var formattedGeneric = HTMLcontactGeneric.replace("%contact%", contact);
-  formattedGeneric = formattedGeneric.replace("%data%", bio.contacts[contact]);
-  $("#topContacts").append(formattedGeneric);
-}
-
-var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
-$("#header").append(formattedPic);
-
-if(bio.skills.length > 0 ){
-  $("#header").append(HTMLskillsStart);
-
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-  $("#skills").append(formattedSkill);
-
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-  $("#skills").append(formattedSkill);
-
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-  $("#skills").append(formattedSkill);
-
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-  $("#skills").append(formattedSkill);
-
-  var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-  $("#skills").append(formattedSkill);
-}
-
-for(job in work.jobs) {
-  $("#workExperience").append(HTMLworkStart);
-
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-  var formattedEmployerTitle = formattedEmployer + formattedTitle;
-
-  var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-  var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-
-  $(".work-entry:last").append(formattedEmployerTitle, formattedDates, formattedDescription);
-}
-
-work.displayWork = function() {
-  var formattedName = HTMLheaderName.replace("%data%", bio.name);
-  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-  $("#header").prepend(formattedName, formattedRole);
-}
-
-work.displayWork();
-
-$(document).click(function(loc) {
-  var x = loc.pageX;
-  var y = loc.pageY;
-
-  logClicks(x, y);
-});
-
-$("#main").append(internationalizeButton);
-
-function inName(name) {
-  name = name.trim().split(" ");
-  name[1] = name[1].toUpperCase();
-  name[0] = name[0].slice(0,1).toUpperCase() +
-    name[0].slice(1).toLowerCase();
-
-  return name.join(" ");
-}
+// $("#main").append(internationalizeButton);
+// function inName(name) {
+//   name = name.trim().split(" ");
+//   name[1] = name[1].toUpperCase();
+//   name[0] = name[0].slice(0,1).toUpperCase() +
+//     name[0].slice(1).toLowerCase();
+//
+//   return name.join(" ");
+// }
 
 $("#mapDiv").append(googleMap);
+
+bio.display();
+work.display();
+projects.display();
