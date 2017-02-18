@@ -27,20 +27,10 @@ var bio = {
     if(bio.skills.length > 0 ){
       $("#header").append(HTMLskillsStart);
 
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-      $("#skills").append(formattedSkill);
-
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-      $("#skills").append(formattedSkill);
-
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-      $("#skills").append(formattedSkill);
-
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-      $("#skills").append(formattedSkill);
-
-      var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-      $("#skills").append(formattedSkill);
+      for (skill in bio.skills) {
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+        $("#skills").append(formattedSkill)
+      }
     }
   }
 };
@@ -50,16 +40,16 @@ var work = {
     {
       "employer": "Wappa",
       "title": "C# .Net BackEnd Developer",
-      "dates": 2015,
-      "description": "Eight months working with .Net plataform.",
-      "location": "Vila Olímpia, São Paulo"
+      "location": "Vila Olímpia, São Paulo",
+      "dates": " May 2015 - January 2016",
+      "description": "Eight months working with .Net plataform."
     },
     {
       "employer": "OnTime",
       "title": "Web Developer",
-      "dates": 2016,
-      "description": "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML",
-      "location": "CLI - Itapevi, São Paulo"
+      "location": "CLI - Itapevi, São Paulo",
+      "dates": "October 2016 - Actual",
+      "description": "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML"
     }
   ],
   "display": function () {
@@ -129,7 +119,8 @@ var education = {
       "name": "FATEC",
       "location": "Carapicuíba, SP",
       "degree": "Bachelor",
-      "dates": 2015,
+      "majors": "CS",
+      "dates": "2014 - 2017",
       "url": "http://www.fateccarapicuiba.edu.br/"
     }
   ],
@@ -140,7 +131,41 @@ var education = {
       "dates": "2017",
       "url": "https://www.udacity.com/",
     }
-  ]
+  ],
+  "display": function () {
+    for(school in education.schools) {
+      $("#education").append(HTMLschoolStart);
+
+      var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+      var formattedDegree  = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+      var NameDegree = formattedName + formattedDegree;
+      $(".education-entry:last").append(NameDegree);
+
+      var formattedDates  = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+      $(".education-entry:last").append(formattedDates);
+
+      var formattedLocation  = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+      $(".education-entry:last").append(formattedLocation);
+
+      var formattedMajor  = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+      $(".education-entry:last").append(formattedMajor);
+    }
+
+    for(onlineCourse in education.onlineCourses) {
+      $(".education-entry:last").append(HTMLonlineClasses);
+
+      var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
+      var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
+      var titleSchool = formattedTitle + formattedSchool;
+      $(".education-entry:last").append(titleSchool);
+
+      var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
+      $(".education-entry:last").append(formattedOnlineDates);
+
+      var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+      $(".education-entry:last").append(formattedURL);
+    }
+  }
 };
 
 // $(document).click(function(loc) {
@@ -165,3 +190,4 @@ $("#mapDiv").append(googleMap);
 bio.display();
 work.display();
 projects.display();
+education.display();
