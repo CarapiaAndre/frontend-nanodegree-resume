@@ -7,7 +7,7 @@ var bio = {
         github: "CarapiaAndre",
         location: "Vila Aurora, Itapevi, SP"
     },
-    skills: ["C#", "HTML", "CSS", "JavaScript", "SqlServer"],
+    skills: ["HTML", "CSS", "JavaScript", "C#", "SqlServer"],
     biopic: "images/fry.jpg",
 
     /*
@@ -81,19 +81,19 @@ var projects = {
             title: "My first responsive blog.",
             dates: 2017,
             description: "Make a static blog with 3,5MB be come a responsive blog with 450kb's, amazing work with images :D",
-            images: ["images/blog.JPG"]
+            images: ["images/blog-300x400.jpg"]
         },
         {
             title: "Birghton-Times",
             dates: 2017,
             description: "Make a static news page in a responsive page.",
-            images: ["images/brighton-times.JPG"]
+            images: ["images/brighton-times-300x400.jpg"]
         },
         {
             title: "animal-card",
             dates: 2017,
             description: "Just kidding with Css (:",
-            images: ["images/animal-card.JPG"]
+            images: ["images/animal-card-300x400.jpg"]
         }
     ],
 
@@ -204,3 +204,11 @@ work.display();
 education.display();
 projects.display();
 bio.display();
+
+$(document).ready(function() {
+    style.checkDisplay();
+})
+
+$(window).resize(function() {
+    style.checkDisplay();
+})
