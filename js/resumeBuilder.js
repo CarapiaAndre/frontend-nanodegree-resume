@@ -1,15 +1,19 @@
 var bio = {
-    "name": "André Carapiá",
-    "role": "Web Developer",
-    "contacts": {
-        "mobile": "(11) 97132-6276",
-        "e-mail": "carapia.andre@gmail.com",
-        "github": "CarapiaAndre",
-        "location": "Vila Aurora, Itapevi, SP"
+    name: "André Carapiá",
+    role: "Web Developer",
+    contacts: {
+        mobile: "(11) 97132-6276",
+        email: "carapia.andre@gmail.com",
+        github: "CarapiaAndre",
+        location: "Vila Aurora, Itapevi, SP"
     },
-    "skills": ["C#", "HTML", "CSS", "JavaScript", "SqlServer"],
-    "biopic": "images/fry.jpg",
-    "display": function() {
+    skills: ["C#", "HTML", "CSS", "JavaScript", "SqlServer"],
+    biopic: "images/fry.jpg",
+
+    /*
+    * @description Display Bio infos replacing the %data% for values and appending in DOM.
+    */
+    display: function() {
         var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
         $("#header").prepend(formattedName, formattedRole);
@@ -28,141 +32,152 @@ var bio = {
 
         if (bio.skills.length > 0) {
             $("#header").append(HTMLskillsStart);
-
-            for (var i = 0; i < bio.skills.length; i++) {
-                var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+            bio.skills.forEach(function(skill) {
+                var formattedSkill = HTMLskills.replace("%data%", skill);
                 $("#skills").append(formattedSkill);
-            }
+            });
         }
     }
 };
 
 var work = {
-    "jobs": [{
-            "employer": "Wappa",
-            "title": "C# .Net BackEnd Developer",
-            "location": "Vila Olímpia, São Paulo",
-            "dates": " May 2015 - January 2016",
-            "description": "Eight months working with .Net plataform."
+    jobs: [{
+            employer: "Wappa",
+            title: "C# .Net BackEnd Developer",
+            location: "Vila Olímpia, São Paulo",
+            dates: " May 2015 - January 2016",
+            description: "Eight months working with .Net plataform."
         },
         {
-            "employer": "OnTime",
-            "title": "Web Developer",
-            "location": "CLI - Itapevi, São Paulo",
-            "dates": "October 2016 - Actual",
-            "description": "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML"
+            employer: "OnTime",
+            title: "Web Developer",
+            location: "CLI - Itapevi, São Paulo",
+            dates: "October 2016 - Actual",
+            description: "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML"
         }
     ],
-    "display": function() {
-        for (var i = 0; i < work.jobs.length; i++) {
+
+    /*
+    * @description Display Jobs infos replacing the %data% for values and appending in DOM.
+    */
+    display: function() {
+        work.jobs.forEach(function(job) {
             $("#workExperience").append(HTMLworkStart);
 
-            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
-            var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+            var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
             var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
-            var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
-            var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
+            var formattedDates = HTMLworkDates.replace("%data%", job.dates);
+            var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
 
             $(".work-entry:last").append(formattedEmployerTitle, formattedDates, formattedDescription);
-        }
+        });
     }
 };
 
 var projects = {
-    "projects": [{
-            "title": "My first responsive blog.",
-            "dates": 2017,
-            "description": "Make a static blog with 3,5MB be come a responsive blog with 450kb's, amazing work with images :D",
-            "images": ["images/blog.JPG"]
+    projects: [{
+            title: "My first responsive blog.",
+            dates: 2017,
+            description: "Make a static blog with 3,5MB be come a responsive blog with 450kb's, amazing work with images :D",
+            images: ["images/blog.JPG"]
         },
         {
-            "title": "Birghton-Times",
-            "dates": 2017,
-            "description": "Make a static news page in a responsive page.",
-            "images": ["images/brighton-times.JPG"]
+            title: "Birghton-Times",
+            dates: 2017,
+            description: "Make a static news page in a responsive page.",
+            images: ["images/brighton-times.JPG"]
         },
         {
-            "title": "animal-card",
-            "dates": 2017,
-            "description": "Just kidding with Css (:",
-            "images": ["images/animal-card.JPG"]
+            title: "animal-card",
+            dates: 2017,
+            description: "Just kidding with Css (:",
+            images: ["images/animal-card.JPG"]
         }
     ],
-    "display": function() {
-        for (var i = 0; i < projects.projects.length; i++) {
+
+    /*
+    * @description Display Projects infos replacing the %data% for values and appending in DOM.
+    */
+    display: function() {
+        projects.projects.forEach(function (project) {
             $("#projects").append(HTMLprojectStart);
 
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.title);
             $(".project-entry:last").append(formattedProjectTitle);
 
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+            var formattedProjectDates = HTMLprojectDates.replace("%data%", project.dates);
             $(".project-entry:last").append(formattedProjectDates);
 
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.description);
             $(".project-entry:last").append(formattedProjectDescription);
 
-            var imgLenght = projects.projects[i].images.length;
+            var imgLenght = project.images.length;
 
             if (imgLenght > 0) {
                 for (var img = 0; img < imgLenght; img++) {
-                    var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+                    var formattedImage = HTMLprojectImage.replace("%data%", project.images[img]);
 
                     $(".project-entry:last").append(formattedImage);
                 }
             }
-        }
+        });
     }
 };
 
 var education = {
-    "schools": [{
-        "name": "FATEC",
-        "location": "Carapicuíba, SP",
-        "degree": "Bachelor",
-        "majors": "CS",
-        "dates": "2014 - 2017",
-        "url": "http://www.fateccarapicuiba.edu.br/"
+    schools: [{
+        name: "FATEC",
+        location: "Carapicuíba, SP",
+        degree: "Bachelor",
+        majors: "CS",
+        dates: "2014 - 2017",
+        url: "http://www.fateccarapicuiba.edu.br/"
     }],
-    "onlineCourses": [{
-        "title": "Front-End Web Developer",
-        "school": "Udacity",
-        "dates": "2017",
-        "url": "https://www.udacity.com/",
+    onlineCourses: [{
+        title: "Front-End Web Developer",
+        school: "Udacity",
+        dates: "2017",
+        url: "https://www.udacity.com/",
     }],
-    "display": function() {
-        for (var i = 0; i < education.schools.lenght; i++) {
+
+    /*
+    * @description Display Schools and OnlineCourses infos replacing the %data% for values and appending in DOM.
+    */
+    display: function() {
+        education.schools.forEach(function (school) {
             $("#education").append(HTMLschoolStart);
 
-            var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
-            var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+            var formattedName = HTMLschoolName.replace("%data%", school.name);
+            var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
             var NameDegree = formattedName + formattedDegree;
             $(".education-entry:last").append(NameDegree);
 
-            var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+            var formattedDates = HTMLschoolDates.replace("%data%", school.dates);
             $(".education-entry:last").append(formattedDates);
 
-            var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+            var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
             $(".education-entry:last").append(formattedLocation);
 
-            var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
+            var formattedMajor = HTMLschoolMajor.replace("%data%", school.majors);
             $(".education-entry:last").append(formattedMajor);
-        }
+        });
 
-        for (var cont = 0; cont < education.onlineCourses.lenght; cont++) {
+        education.onlineCourses.forEach(function (course) {
             $(".education-entry:last").append(HTMLonlineClasses);
 
-            var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[cont].title);
-            var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[cont].school);
+            var formattedTitle = HTMLonlineTitle.replace("%data%", course.title);
+            var formattedSchool = HTMLonlineSchool.replace("%data%", course.school);
             var titleSchool = formattedTitle + formattedSchool;
             $(".education-entry:last").append(titleSchool);
 
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[cont].dates);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
             $(".education-entry:last").append(formattedOnlineDates);
 
-            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[cont].url);
+            var formattedURL = HTMLonlineURL.replace("%data%", course.url);
             $(".education-entry:last").append(formattedURL);
-        }
+        });
     }
 };
 
@@ -184,8 +199,6 @@ var education = {
 // }
 
 $("#mapDiv").append(googleMap);
-
-
 
 work.display();
 education.display();
