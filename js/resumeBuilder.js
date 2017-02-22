@@ -43,17 +43,17 @@ var bio = {
 var work = {
     jobs: [{
             employer: "Wappa",
-            title: "C# .Net BackEnd Developer",
+            title: "Desenvolvedor BackEnd C#",
             location: "Vila Olímpia, São Paulo",
-            dates: " May 2015 - January 2016",
-            description: "Eight months working with .Net plataform."
+            dates: " Maio 2015 - Janeiro 2016",
+            description: "Lorem: Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.."
         },
         {
             employer: "OnTime",
             title: "Web Developer",
             location: "CLI - Itapevi, São Paulo",
-            dates: "October 2016 - Actual",
-            description: "My actual work, I'm FullStack Developer, working with SQL Server, C#, JavaScript, CSS and HTML"
+            dates: "Outubro 2016 - Atual",
+            description: "Lorem: Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring."
         }
     ],
 
@@ -80,19 +80,19 @@ var projects = {
     projects: [{
             title: "My first responsive blog.",
             dates: 2017,
-            description: "Make a static blog with 3,5MB be come a responsive blog with 450kb's, amazing work with images :D",
+            description: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.",
             images: ["images/blog-300x400.jpg"]
         },
         {
             title: "Birghton-Times",
             dates: 2017,
-            description: "Make a static news page in a responsive page.",
+            description: "Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.",
             images: ["images/brighton-times-300x400.jpg"]
         },
         {
             title: "animal-card",
             dates: 2017,
-            description: "Just kidding with Css (:",
+            description: "Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.",
             images: ["images/animal-card-300x400.jpg"]
         }
     ],
