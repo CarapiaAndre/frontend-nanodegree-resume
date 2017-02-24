@@ -49,14 +49,19 @@ var work = {
             title: "Desenvolvedor BackEnd C#",
             location: "Vila Olímpia, São Paulo",
             dates: " Maio 2015 - Janeiro 2016",
-            description: "Lorem: Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.."
+            description: "Lorem: Leverage agile frameworks to provide a robust synopsis for high level overviews. "+
+            "Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. "+
+            "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.."
         },
         {
             employer: "OnTime",
             title: "Web Developer",
             location: "CLI - Itapevi, São Paulo",
             dates: "Outubro 2016 - Atual",
-            description: "Lorem: Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring."
+            description: "Lorem: Bring to the table win-win survival strategies to ensure proactive domination. "+
+            "At the end of the day, going forward, a new normal that has evolved from generation X is on the runway "+
+            "heading towards a streamlined cloud solution. User generated content in real-time will have multiple "+
+            "touchpoints for offshoring."
         }
     ],
 
@@ -83,19 +88,25 @@ var projects = {
     projects: [{
             title: "My first responsive blog.",
             dates: 2017,
-            description: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.",
+            description: "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. "+
+            "Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the "+
+            "information highway will close the loop on focusing solely on the bottom line.",
             images: ["images/blog-300x400.jpg"]
         },
         {
             title: "Birghton-Times",
             dates: 2017,
-            description: "Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.",
+            description: "Podcasting operational change management inside of workflows to establish a framework. "+
+            "Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball "+
+            "while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.",
             images: ["images/brighton-times-300x400.jpg"]
         },
         {
             title: "animal-card",
             dates: 2017,
-            description: "Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.",
+            description: "Collaboratively administrate empowered markets via plug-and-play networks. "+
+            "Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer "+
+            "directed convergence without revolutionary ROI.",
             images: ["images/animal-card-300x400.jpg"]
         }
     ],
